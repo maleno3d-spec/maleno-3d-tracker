@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maleno 3D - Tracker & Precificação</title>
+    <title>Maleno 3D - Tracker & Gerador de Anúncios</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
@@ -12,9 +12,9 @@
         <!-- Cabeçalho Maleno 3D -->
         <header class="mb-6 text-center bg-white border border-[#E2E8F0] rounded-2xl p-6 sm:p-8 shadow-sm">
             <h1 class="text-3xl font-extrabold text-[#2C3E50] tracking-tight mb-2">
-                Maleno <span class="text-[#F39C12]">3D</span> 🎄
+                Maleno <span class="text-[#F39C12]">3D</span> 🚀
             </h1>
-            <p class="text-[#7F8C8D] text-sm font-medium mb-4">Monitoramento e Comparador de Preços do Mercado</p>
+            <p class="text-[#7F8C8D] text-sm font-medium mb-4">Painel de Precificação & Gerador de Anúncios Prontos</p>
             
             <!-- Controles: Busca + Ordenação + Botão -->
             <div class="flex flex-col sm:flex-row gap-3 justify-center items-center max-w-2xl mx-auto">
@@ -44,11 +44,11 @@
             <!-- Resumo de Preços do Mercado -->
             <div id="resumo-precos" class="hidden mt-4 pt-4 border-t border-[#EDF2F7] grid grid-cols-2 gap-4 max-w-sm mx-auto text-xs">
                 <div class="bg-[#E8F8F5] p-2.5 rounded-lg border border-[#A3E4D7]">
-                    <span class="text-[#16A085] font-semibold block">Mais Barato Encontrado</span>
+                    <span class="text-[#16A085] font-semibold block">Menor Preço</span>
                     <span id="preco-min" class="text-base font-black text-[#117A65]">R$ 0,00</span>
                 </div>
                 <div class="bg-[#FEF9E7] p-2.5 rounded-lg border border-[#F9E79F]">
-                    <span class="text-[#D4AC0D] font-semibold block">Maior Valor / Kit</span>
+                    <span class="text-[#D4AC0D] font-semibold block">Maior Preço / Kit</span>
                     <span id="preco-max" class="text-base font-black text-[#B7950B]">R$ 0,00</span>
                 </div>
             </div>
@@ -59,6 +59,27 @@
         <!-- Grade de Produtos -->
         <div id="lista-produtos" class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <p class="text-center text-[#7F8C8D] col-span-2 py-10">A carregar produtos...</p>
+        </div>
+    </div>
+
+    <!-- MODAL / JANELA DE GERADOR DE ANÚNCIO (COPIA E COLA) -->
+    <div id="modal-anuncio" class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="fecharModal()" class="absolute top-4 right-4 text-[#95A5A6] hover:text-[#2C3E50] text-xl font-bold">✕</button>
+            
+            <h3 class="text-xl font-bold text-[#2C3E50] mb-1">📋 Anúncio Pronto - Maleno 3D</h3>
+            <p class="text-xs text-[#7F8C8D] mb-4">Copia o texto abaixo e cola direto na Shopee ou Mercado Livre.</p>
+
+            <textarea id="texto-anuncio" class="w-full h-64 p-3 border border-[#CBD5E1] rounded-xl text-xs font-mono bg-[#F8FAFC] text-[#334155] focus:outline-none focus:ring-2 focus:ring-[#F39C12] mb-4" readonly></textarea>
+
+            <div class="flex gap-3">
+                <button onclick="copiarTextoAnuncio()" id="btn-copiar" class="flex-1 bg-[#27AE60] hover:bg-[#219653] text-white font-bold py-2.5 rounded-xl text-sm transition shadow-sm">
+                    ✨ Copiar Texto Completo
+                </button>
+                <button onclick="fecharModal()" class="bg-[#E2E8F0] hover:bg-[#CBD5E1] text-[#475569] font-medium px-4 py-2.5 rounded-xl text-sm transition">
+                    Fechar
+                </button>
+            </div>
         </div>
     </div>
 
@@ -133,8 +154,7 @@
                 const card = document.createElement("div");
                 card.className = "bg-white border border-[#E2E8F0] rounded-xl p-5 shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden";
                 
-                // Imagem padrão caso o produto não tenha foto
-                const imgUrl = p.imagem || "https://placehold.co/400x300/f4f5f7/2c3e50?text=Produto+3D";
+                const imgUrl = p.imagem || "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=500&auto=format&fit=crop";
 
                 card.innerHTML = `
                     <div>
@@ -145,18 +165,76 @@
                         </div>
                         <h2 class="text-base font-bold text-[#2C3E50] mb-2 line-clamp-2">${p.titulo}</h2>
                     </div>
-                    <div class="flex items-center justify-between mt-4 pt-3 border-t border-[#EDF2F7]">
-                        <div>
-                            <span class="text-[10px] uppercase font-semibold tracking-wider text-[#95A5A6] block">Preço</span>
-                            <span class="text-xl font-black text-[#27AE60]">R$ ${p.preco.toFixed(2)}</span>
+                    <div class="flex flex-col gap-3 mt-4 pt-3 border-t border-[#EDF2F7]">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <span class="text-[10px] uppercase font-semibold tracking-wider text-[#95A5A6] block">Mercado</span>
+                                <span class="text-xl font-black text-[#27AE60]">R$ ${p.preco.toFixed(2)}</span>
+                            </div>
+                            <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="bg-[#F39C12] hover:bg-[#D68910] text-white font-medium px-3.5 py-1.5 rounded-lg text-xs transition shadow-sm flex items-center gap-1">
+                                Ver Anúncio ↗
+                            </a>
                         </div>
-                        <a href="${p.link}" target="_blank" rel="noopener noreferrer" class="bg-[#F39C12] hover:bg-[#D68910] text-white font-medium px-4 py-2 rounded-lg text-sm transition shadow-sm flex items-center gap-1">
-                            Ver Anúncio ↗
-                        </a>
+                        <button onclick="gerarAnuncio('${p.titulo.replace(/'/g, "\\'")}', ${p.preco})" class="w-full bg-[#3498DB] hover:bg-[#2980B9] text-white font-semibold py-2 rounded-lg text-xs transition flex items-center justify-center gap-1.5 shadow-sm">
+                            📋 Gerar Anúncio Pronto (Copia e Cola)
+                        </button>
                     </div>
                 `;
                 container.appendChild(card);
             });
+        }
+
+        function gerarAnuncio(titulo, preco) {
+            const texto = `[TÍTULO DO ANÚNCIO]
+${titulo} - Impressão 3D PLA | Maleno 3D
+
+----------------------------------------
+[DESCRIÇÃO COMPLETA]
+Deixe seu ambiente incrível e moderno com as peças exclusivas da Maleno 3D!
+
+Produzido com tecnologia de ponta em Impressão 3D utilizando PLA biodegradável premium, unindo alta resistência, leveza e acabamento sofisticado. Ideal para decoração, presente ou composição de ambientes.
+
+DIFERENCIAIS MALENO 3D:
+- Design exclusivo com acabamento de alta qualidade.
+- Material ecológico e resistente (PLA Premium).
+- Envio rápido e bem embalado para todo o Brasil.
+
+ESPECIFICAÇÕES TÉCNICAS:
+- Fabricante: Maleno 3D
+- Material: Plástico PLA Premium
+- Preço Sugerido de Venda: R$ ${preco.toFixed(2)}
+
+CUIDADOS COM O PRODUTO:
+- Limpar com pano seco ou levemente úmido.
+- Evitar exposição direta ao sol intenso ou fontes de calor elevado.
+- Indicado para ambientes internos.
+
+*Por se tratar de uma peça produzida em Impressão 3D, pode conter linhas sutis características do processo de fabricação.*
+
+TAGS DE BUSCA:
+#maleno3d #impressao3d #decoracao #casa #presente #shopee #mercadolivre #arquitetura #design3d`;
+
+            document.getElementById("texto-anuncio").value = texto;
+            document.getElementById("modal-anuncio").classList.remove("hidden");
+        }
+
+        function copiarTextoAnuncio() {
+            const textarea = document.getElementById("texto-anuncio");
+            textarea.select();
+            navigator.clipboard.writeText(textarea.value);
+            
+            const btn = document.getElementById("btn-copiar");
+            btn.textContent = "✅ Copiado com Sucesso!";
+            btn.classList.replace("bg-[#27AE60]", "bg-[#1E8449]");
+
+            setTimeout(() => {
+                btn.textContent = "✨ Copiar Texto Completo";
+                btn.classList.replace("bg-[#1E8449]", "bg-[#27AE60]");
+            }, 2500);
+        }
+
+        function fecharModal() {
+            document.getElementById("modal-anuncio").classList.add("hidden");
         }
 
         carregarProdutos();
