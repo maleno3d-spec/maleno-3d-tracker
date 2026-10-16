@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "titulo": "Árvore de Natal Modular 3D Empilhável (Atualizado pelo Robô)",
+        "plataforma": "Shopee",
+        "preco": 47.5,
+        "vendas_estimadas": "1.5k vendidos",
+        "link": "https://shopee.com.br"
+    },
+    {
+        "id": 2,
+        "titulo": "Papai Noel Articulado para Impressão 3D (Novo Lote)",
+        "plataforma": "Mercado Livre",
+        "preco": 75.0,
+        "vendas_estimadas": "920 vendidos",
+        "link": "https://mercadolivre.com.br"
+    },
+    {
+        "id": 3,
+        "titulo": "Rena Estilizada 3D Decoração Navidência",
+        "plataforma": "Shopee",
+        "preco": 39.9,
+        "vendas_estimadas": "3.1k vendidos",
+        "link": "https://shopee.com.br"
+    }
+]
