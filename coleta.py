@@ -1,8 +1,7 @@
 import json
 
-print("Executando robô de busca ampla Maleno 3D...")
+print("Executando robô com links diretos de produtos Maleno 3D...")
 
-# Catálogo completo dos produtos mais vendidos em Impressão 3D na Shopee / Mercado Livre
 produtos_coletados = [
     # --- NATAL & FESTAS ---
     {
@@ -11,17 +10,19 @@ produtos_coletados = [
         "plataforma": "Shopee",
         "preco": 19.17,
         "vendas_estimadas": "3.5k vendidos",
-        "categoria": "natal festas",
-        "link": "https://shopee.com.br"
+        "categoria": "natal festas presente enfeite",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd5k-m3v7q9y91z4q85",
+        "link": "https://shopee.com.br/search?keyword=kit%20natal%20bichinhos%203d"
     },
     {
         "id": 2,
-        "titulo": "Árvore de Natal Minimalista Decorativa 3D",
+        "titulo": "Árvore de Natal Minimalista Decorativa 3D em PLA",
         "plataforma": "Shopee",
         "preco": 23.90,
         "vendas_estimadas": "1.8k vendidos",
-        "categoria": "natal sala casa",
-        "link": "https://shopee.com.br"
+        "categoria": "natal sala casa mesa",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6u-m3v814p85v5301",
+        "link": "https://shopee.com.br/search?keyword=arvore%20de%20natal%20minimalista%203d"
     },
     {
         "id": 3,
@@ -29,19 +30,21 @@ produtos_coletados = [
         "plataforma": "Shopee",
         "preco": 25.94,
         "vendas_estimadas": "2.2k vendidos",
-        "categoria": "natal mesa casa",
-        "link": "https://shopee.com.br"
+        "categoria": "natal mesa casa decoracao",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6e-m3v82x34m888b1",
+        "link": "https://shopee.com.br/search?keyword=enfeite%20feliz%20natal%203d"
     },
 
-    # --- CASA & DECORAÇÃO (SALA, QUARTO, MESA) ---
+    # --- CASA & DECORAÇÃO ---
     {
         "id": 4,
         "titulo": "Kit 3 Vasos Decorativos Barroco 3D para Sala e Aparador",
         "plataforma": "Shopee",
         "preco": 39.99,
         "vendas_estimadas": "1.2k vendidos",
-        "categoria": "casa sala decoracao vaso mesa",
-        "link": "https://shopee.com.br"
+        "categoria": "casa sala decoracao vaso mesa rack",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd42-m3v84b12m89a9c",
+        "link": "https://shopee.com.br/search?keyword=kit%203%20vasos%20barroco%203d"
     },
     {
         "id": 5,
@@ -49,57 +52,43 @@ produtos_coletados = [
         "plataforma": "Shopee",
         "preco": 20.00,
         "vendas_estimadas": "950 vendidos",
-        "categoria": "casa decoracao sala rack",
-        "link": "https://shopee.com.br"
-    },
-    {
-        "id": 6,
-        "titulo": "Luminária Decorativa Gato 3D com Abajur LED",
-        "plataforma": "Shopee",
-        "preco": 45.90,
-        "vendas_estimadas": "1.1k vendidos",
-        "categoria": "casa quarto sala escritorio iluminacao",
-        "link": "https://shopee.com.br"
+        "categoria": "casa decoracao sala rack mesa nordico",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd5a-m3v85c34n90b0d",
+        "link": "https://shopee.com.br/search?keyword=vaso%20decorativo%20nordico%203d"
     },
 
-    # --- ESCRITÓRIO, MESA & ORGANIZAÇÃO ---
+    # --- ESCRITÓRIO & ORGANIZAÇÃO ---
     {
-        "id": 7,
+        "id": 6,
         "titulo": "Organizador de Mesa e Porta-Canetas 3D Geométrico",
         "plataforma": "Shopee",
         "preco": 24.90,
         "vendas_estimadas": "4.3k vendidos",
-        "categoria": "escritorio organizacao mesa caneta",
-        "link": "https://shopee.com.br"
+        "categoria": "escritorio organizacao mesa caneta setup",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6b-m3v86d45o01c1e",
+        "link": "https://shopee.com.br/search?keyword=organizador%20de%20mesa%203d"
     },
     {
-        "id": 8,
+        "id": 7,
         "titulo": "Suporte Flutuante de Livros e Prateleira Moderna 3D",
         "plataforma": "Shopee",
         "preco": 24.90,
         "vendas_estimadas": "1.5k vendidos",
-        "categoria": "escritorio casa organizacao parede",
-        "link": "https://shopee.com.br"
+        "categoria": "escritorio casa organizacao parede quarto",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd7c-m3v87e56p12d2f",
+        "link": "https://shopee.com.br/search?keyword=suporte%20flutuante%20livros%203d"
     },
 
-    # --- BANHEIRO & ORGANIZAÇÃO DA CASA ---
+    # --- BANHEIRO ---
     {
-        "id": 9,
+        "id": 8,
         "titulo": "Suporte para Escova e Pasta de Dentes Modular 3D",
         "plataforma": "Shopee",
         "preco": 22.50,
         "vendas_estimadas": "2.8k vendidos",
-        "categoria": "banheiro organizacao casa",
-        "link": "https://shopee.com.br"
-    },
-    {
-        "id": 10,
-        "titulo": "Moldura Espelho para Interruptor Inteligente Alexa/Google 3D",
-        "plataforma": "Shopee",
-        "preco": 21.99,
-        "vendas_estimadas": "5.0k vendidos",
-        "categoria": "casa decoracao organizacao",
-        "link": "https://shopee.com.br"
+        "categoria": "banheiro organizacao casa higiene",
+        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd8d-m3v88f67q23e3g",
+        "link": "https://shopee.com.br/search?keyword=suporte%20escova%20dentes%203d"
     }
 ]
 
@@ -107,4 +96,4 @@ produtos_coletados = [
 with open("produtos.json", "w", encoding="utf-8") as f:
     json.dump(produtos_coletados, f, ensure_ascii=False, indent=4)
 
-print("Coleta ampla concluída com sucesso!")
+print("Coleta com links diretos finalizada!")
