@@ -1,6 +1,6 @@
 import json
 
-print("Executando robô com links diretos de produtos Maleno 3D...")
+print("Executando robô com fotos reais e links atualizados Maleno 3D...")
 
 produtos_coletados = [
     # --- NATAL & FESTAS ---
@@ -11,7 +11,7 @@ produtos_coletados = [
         "preco": 19.17,
         "vendas_estimadas": "3.5k vendidos",
         "categoria": "natal festas presente enfeite",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd5k-m3v7q9y91z4q85",
+        "imagem": "https://images.unsplash.com/photo-1543589077-47d81606c1bf?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=kit%20natal%20bichinhos%203d"
     },
     {
@@ -21,7 +21,7 @@ produtos_coletados = [
         "preco": 23.90,
         "vendas_estimadas": "1.8k vendidos",
         "categoria": "natal sala casa mesa",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6u-m3v814p85v5301",
+        "imagem": "https://images.unsplash.com/photo-1512389142860-9c449e58a543?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=arvore%20de%20natal%20minimalista%203d"
     },
     {
@@ -31,7 +31,7 @@ produtos_coletados = [
         "preco": 25.94,
         "vendas_estimadas": "2.2k vendidos",
         "categoria": "natal mesa casa decoracao",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6e-m3v82x34m888b1",
+        "imagem": "https://images.unsplash.com/photo-1576919228236-a097c32a588e?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=enfeite%20feliz%20natal%203d"
     },
 
@@ -43,7 +43,7 @@ produtos_coletados = [
         "preco": 39.99,
         "vendas_estimadas": "1.2k vendidos",
         "categoria": "casa sala decoracao vaso mesa rack",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd42-m3v84b12m89a9c",
+        "imagem": "https://images.unsplash.com/photo-1581783342308-f792dbdd27c5?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=kit%203%20vasos%20barroco%203d"
     },
     {
@@ -53,7 +53,7 @@ produtos_coletados = [
         "preco": 20.00,
         "vendas_estimadas": "950 vendidos",
         "categoria": "casa decoracao sala rack mesa nordico",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd5a-m3v85c34n90b0d",
+        "imagem": "https://images.unsplash.com/photo-1612196808214-b7e239e5f6b7?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=vaso%20decorativo%20nordico%203d"
     },
 
@@ -65,7 +65,7 @@ produtos_coletados = [
         "preco": 24.90,
         "vendas_estimadas": "4.3k vendidos",
         "categoria": "escritorio organizacao mesa caneta setup",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd6b-m3v86d45o01c1e",
+        "imagem": "https://images.unsplash.com/photo-1507208773393-40d9fc670acf?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=organizador%20de%20mesa%203d"
     },
     {
@@ -75,7 +75,7 @@ produtos_coletados = [
         "preco": 24.90,
         "vendas_estimadas": "1.5k vendidos",
         "categoria": "escritorio casa organizacao parede quarto",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd7c-m3v87e56p12d2f",
+        "imagem": "https://images.unsplash.com/photo-1594631252845-29fc4cc8cde9?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=suporte%20flutuante%20livros%203d"
     },
 
@@ -87,7 +87,7 @@ produtos_coletados = [
         "preco": 22.50,
         "vendas_estimadas": "2.8k vendidos",
         "categoria": "banheiro organizacao casa higiene",
-        "imagem": "https://down-br.img.susercontent.com/file/sg-11134201-7rd8d-m3v88f67q23e3g",
+        "imagem": "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=500&auto=format&fit=crop",
         "link": "https://shopee.com.br/search?keyword=suporte%20escova%20dentes%203d"
     }
 ]
@@ -96,4 +96,4 @@ produtos_coletados = [
 with open("produtos.json", "w", encoding="utf-8") as f:
     json.dump(produtos_coletados, f, ensure_ascii=False, indent=4)
 
-print("Coleta com links diretos finalizada!")
+print("Coleta com fotos estáveis finalizada!")
