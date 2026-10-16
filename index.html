@@ -87,12 +87,16 @@
                 container.appendChild(card);
             });
         }
-
-        function filtrarProdutos() {
-            const termo = document.getElementById("input-busca").value.toLowerCase();
-            const filtrados = todosProdutos.filter(p => p.titulo.toLowerCase().includes(termo) || p.plataforma.toLowerCase().includes(termo));
-            renderizar(filtrados);
-        }
+function filtrarProdutos() {
+    const termo = document.getElementById("input-busca").value.toLowerCase();
+    const filtrados = todosProdutos.filter(p => {
+        const titulo = (p.titulo || "").toLowerCase();
+        const plataforma = (p.plataforma || "").toLowerCase();
+        const categoria = (p.categoria || "").toLowerCase();
+        return titulo.includes(termo) || plataforma.includes(termo) || categoria.includes(termo);
+    });
+    renderizar(filtrados);
+}
 
         // Carregar ao abrir a página
         carregarProdutos();
