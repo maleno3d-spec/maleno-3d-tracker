@@ -6,16 +6,19 @@ on:
     - cron: '0 9 * * *'
   workflow_dispatch: # Permite rodar manualmente com um clique
 
+permissions:
+  contents: write # Garante a permissão para salvar atualizações no repositório
+
 jobs:
   executar-robo:
     runs-on: ubuntu-latest
 
     steps:
       - name: Baixar código do repositório
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Configurar o Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -29,8 +32,8 @@ jobs:
 
       - name: Salvar alterações no produtos.json
         run: |
-          git config --global user.name 'Robo Maleno 3D'
-          git config --global user.email 'robo@maleno3d.com'
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add produtos.json
           git commit -m "Atualização automática de produtos [skip ci]" || exit 0
           git push
